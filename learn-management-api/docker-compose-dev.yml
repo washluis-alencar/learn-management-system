@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  postgres-db:
+    image: postgres:13
+    container_name: postgres-db
+    environment:
+      POSTGRES_DB: learn-management
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - /postgres/db/data:/var/lib/postgresql/data
+    network_mode: host

@@ -1,0 +1,37 @@
+<!-- BIG SCREEN -->
+<div style="position: relative">
+  <!-- SIDENAV -->
+  <div
+    class="cv-sidenav flex"
+    (mouseover)="toggleSideNav(true)"
+    (mouseout)="toggleSideNav(false)">
+    <div class="flex flex-column full-flex">
+      <div class="flex full-flex-force" style="margin: 0 0 1.25rem">
+        <ul>
+          <ng-container *ngFor="let menu of sidenavMenu">
+            <li class="flex justify-start align-center">
+              <a
+                class="flex justify-start align-center"
+                [routerLink]="menu.link"
+                routerLinkActive="active">
+                <span>{{ menu.title }}</span>
+              </a>
+            </li>
+          </ng-container>
+          <li class="flex justify-start align-center">
+            <div class="divisor"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE CONTENT -->
+  <div id="portalcontent" class="flex flex-column portal-content">
+    <!--    <cv-pending-payment-alert *ngIf="!mediaService.smallScreen && pendingPayment && !sessionExpired && !subscriptionExpired" [mobile]="mediaService.smallScreen" @fade></cv-pending-payment-alert>-->
+
+    <div class="flex flex-column" style="position: relative; flex: 1 1 0; height: 100%">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,263 @@
+$fieldBottomSpace: 1.59375em;
+
+//COLORS
+$green: #7FC35C;
+$lightGreen: #4AD991;
+$lighterGreen: #90EE90;
+
+$lilac: #A3A0FB; //rgb(163, 160, 251)
+$darkLilac: #7C56F7;
+$darkerLilac: #613FD1;
+$mediumLilac: #8B88FA;
+$lightLilac: #F0F0FF;
+
+$yellow: #FFCA83;
+
+$red: #FF6565;
+
+$orange: #FFA040;
+$darkOrange: #CC5614;
+
+$blue: #3B86FF;
+$lightBlue:#0BCCFA;
+$darkBlue: #4D60DB;
+$darkerBlue: #292F4C; //rgb(41, 47, 76)
+
+$lightBackground: #FBFBFD;
+
+$purple: #613FD1;
+$pink: #E55EFF;
+$darkPink: #EC1C6F;
+$lightPink: #FF87DF;
+
+$white: #FFF;
+$grey: #A5A4BF;
+$darkGrey: #E9E8F3;
+$lightGrey: #F0F0F7;
+$lightBlack: #43425D;
+$lighterBlack: #565570;
+$black: #2d2d39;
+$darkenGrey: darken($grey, 10%);
+
+//FONT
+$lightText: #FFF;
+$darkText: $darkerBlue;
+
+@mixin default-background(){
+  //background: linear-gradient(to top, #FFF 0%, #FFF 2.5rem, #FAFAFC 130px, #FAFAFC 100%) !important;
+  //background: rgba(240, 240, 247, 1);
+  background: $lightBackground;
+}
+
+@mixin linear-gradient-from-bottom($bottom, $top){
+  background: $bottom; /* Old browsers */
+  background: -moz-linear-gradient(bottom,  $bottom 0%, $top 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$bottom), color-stop(100%,$top)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(bottom,  $bottom 0%,$top 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(bottom,  $bottom 0%,$top 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(bottom,  $bottom 0%,$top 100%); /* IE10+ */
+  background: linear-gradient(to top,  $bottom 0%,$top 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4193d6', endColorstr='#39bad6',GradientType=0 ); /* IE6-9 */
+}
+@mixin linear-gradient-from-left($left, $right){
+  background: $left; /* Old browsers */
+  background: -moz-linear-gradient(left,  $left 0%, $right 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,$left), color-stop(100%,$right)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  $left 0%,$right 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left,  $left 0%,$right 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left,  $left 0%,$right 100%); /* IE10+ */
+  background: linear-gradient(to right,  $left 0%,$right 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4193d6', endColorstr='#39bad6',GradientType=0 ); /* IE6-9 */
+}
+@mixin linear-gradient-from-diagonal($left, $right){
+  background: $left; /* Old browsers */
+  background: -moz-linear-gradient(-45deg, $left 0%, $right 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,$left), color-stop(100%,$right)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(-45deg,  $left 0%,$right 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(-45deg,  $left 0%,$right 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(-45deg,  $left 0%,$right 100%); /* IE10+ */
+  background: linear-gradient(135deg,  $left 0%,$right 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$left, endColorstr=$right,GradientType=1 ); /* IE6-9 */
+}
+@mixin shimmer-gradient($defaultColor, $shimmerColor){
+  background: $defaultColor; /* Old browsers */
+  background: -moz-linear-gradient(left,  $defaultColor 0%, $shimmerColor 50%, $defaultColor 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left center, right center, color-stop(0%,$defaultColor), color-stop(50%,$shimmerColor), color-stop(100%,$defaultColor)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(left,  $defaultColor 0%, $shimmerColor 50%, $defaultColor 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(left, $defaultColor 0%, $shimmerColor 50%, $defaultColor 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(left, $defaultColor 0%, $shimmerColor 50%, $defaultColor 100%); /* IE10+ */
+  background: linear-gradient(to right, $defaultColor 0%, $shimmerColor 50%, $defaultColor 100%); /* W3C */
+}
+
+.fg-primary{
+  color: $darkLilac;
+}
+.fg-primary-darken-10{
+  color: darken($darkLilac, 10%);
+}
+.fg-primary-darken-20{
+  color: darken($darkLilac, 20%);
+}
+
+.fg-white{color: #FFF;}
+.fg-white-force{color: #FFF !important;}
+.fg-grey{color: $grey;}
+.fg-grey-darken{color: darken($grey, 10%);}
+.fg-grey-darken-force{color: darken($grey, 10%) !important;}
+.fg-light-green{color: $lightGreen;}
+.fg-light-green-force{color: $lightGreen !important;}
+.fg-red{color: $red;}
+.fg-red-important{color: $red !important;}
+.fg-pink{color: $pink;}
+.fg-light-pink{color: $lightPink;}
+.fg-orange{color: $orange;}
+.fg-orange-force{color: $orange !important;}
+.fg-yellow{color: $yellow;}
+.fg-dark-lilac{color: $darkLilac;}
+.fg-dark-lilac-force{color: $darkLilac !important;}
+.fg-lilac{color: $lilac;}
+.fg-blue{color: $blue;}
+.fg-light-blue{color: $lightBlue;}
+.fg-light-black{color: $lightBlack;}
+.fg-light-black-force{color: $lightBlack !important;}
+.fg-dark-pink{
+  color: $darkPink;
+}
+
+.bg-transparent{background-color: transparent;}
+.bg-transparent-force{background-color: transparent !important;}
+.bg-grey{background-color: $grey;}
+.bg-white{background-color: $white;}
+.bg-light-green{background-color: $lightGreen;}
+.bg-lighter-green{background-color: $lighterGreen;}
+.bg-red{background-color: $red !important;}
+.bg-orange{background-color: $orange;}
+.bg-yellow{background-color: $yellow;}
+.bg-pink{background-color: $pink;}
+.bg-dark-lilac{background-color: $darkLilac;}
+.bg-dark-lilac-force{background-color: $darkLilac !important;}
+.bg-lilac{background-color: $lilac;}
+.bg-lilac-a-50{background-color: rgba($lilac, .5);}
+.bg-blue{background-color: $blue;}
+.bg-light-blue{background-color: $lightBlue;}
+.bg-light-black{background-color: $lightBlack;}
+.bg-light-grey{background-color: $lightGrey;}
+.bg-dark-pink{background-color: $darkPink;}
+
+*.hover-grey:hover{background-color: rgba($grey, .1);}
+*.hover-white:hover{background-color: rgba($white, .1);}
+*.hover-light-green:hover{background-color: rgba($lightGreen, .1);}
+*.hover-lighter-green:hover{background-color: rgba($lighterGreen, .1);}
+*.hover-red:hover{background-color: rgba($red, .1);}
+*.hover-orange:hover{background-color: rgba($orange, .1);}
+*.hover-yellow:hover{background-color: rgba($yellow, .1);}
+*.hover-pink:hover{background-color: rgba($pink, .1);}
+*.hover-dark-lilac:hover{background-color: rgba($darkLilac, .1);}
+*.hover-lilac:hover{background-color: rgba($lilac, .1);}
+*.hover-blue:hover{background-color: rgba($blue, .1);}
+*.hover-light-blue:hover{background-color: rgba($lightBlue, .1);}
+*.hover-light-black:hover{background-color: rgba($lightBlack, .1);}
+
+@mixin browser($browsers: Mozilla) {
+  @each $browser in $browsers {
+    html[data-browser*="#{$browser}"] & {
+      @content;
+    }
+  }
+}
+
+$borderRadius: .25rem;
+
+.italic{
+  font-style: italic;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.small-font{
+  font-size: .625rem;
+}
+
+.font-size-12{
+  font-size: .75rem;
+}
+.font-size-11{
+  font-size: .6875rem;
+}
+.font-size-10{
+  font-size: .625rem;
+}
+
+/**
+ * ==============================================
+ * Dot Flashing Animation
+ * ==============================================
+ */
+
+@keyframes blink {
+  0% {
+    opacity: .2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: .2;
+  }
+}
+
+.loading-message span {
+  position: relative;
+  animation-name: blink;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  animation-fill-mode: both;
+  font-size: 1.25rem;
+
+  &:nth-child(2) {
+    animation-delay: .2s;
+  }
+
+  &:nth-child(3) {
+    animation-delay: .4s;
+  }
+}
+
+
+
+/**
+ * ==============================================
+ * Up And Down Animation
+ * ==============================================
+ */
+
+@keyframes up-and-down-improved {
+  0%   { transform: scale(1,1)      translateY(0); }
+  10%  { transform: scale(1.1,.9)   translateY(0); }
+  30%  { transform: scale(.9,1.1)   translateY(-.9375rem); }
+  50%  { transform: scale(1.05,.95) translateY(0); }
+  57%  { transform: scale(1,1)      translateY(-.1875rem); }
+  64%  { transform: scale(1,1)      translateY(0); }
+  100% { transform: scale(1,1)      translateY(0); }
+}
+
+i.up-and-down{
+  animation-name: up-and-down-improved;
+  animation-duration: 1.4s;
+  animation-iteration-count: infinite;
+  position: relative;
+  animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+
+/**
+ * ==============================================
+ * Mixins
+ * ==============================================
+ */
+@mixin text-overflow-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

@@ -1,0 +1,20 @@
+version: '3.1'
+
+services:
+  postgres-db:
+    image: postgres:13
+    container_name: postgres-db
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: learn-management
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - /db/data:/var/lib/postgresql/data
+    networks:
+      - postgres-net
+
+networks:
+  postgres-net:
+    driver: bridge
