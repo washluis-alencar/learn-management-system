@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Period;
+import java.util.List;
 
 @Service
 public class CourseServiceImpl implements CourseService {
@@ -39,6 +40,11 @@ public class CourseServiceImpl implements CourseService {
         }
 
         return courseRepository.save(course);
+    }
+
+    @Override
+    public List<Course> findAllCourses() {
+        return courseRepository.findAll();
     }
 
     public boolean isCourseCompletedWithinSixMonths(Course course) {

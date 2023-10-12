@@ -5,4 +5,9 @@ package br.com.challenge.exception;
  * @author Alencar, Washington
  */
 public class EntityNotFoundException extends Exception {
+    public EntityNotFoundException(String message) {
+        super(message);
+    }
+
+    public EntityNotFoundException() {}
 }

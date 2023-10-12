@@ -1,6 +1,5 @@
 package br.com.challenge.service.impl;
 
-import br.com.challenge.domain.Student;
 import br.com.challenge.domain.StudentLog;
 import br.com.challenge.repository.StudentLogRepository;
 import br.com.challenge.service.StudentLogService;
@@ -20,13 +19,13 @@ public class StudentLogServiceImpl implements StudentLogService {
 
     @Override
     @Transactional
-    public void removeLog(Student student, Long logId) {
+    public void removeLog(Long learningProgressId, Long logId) {
         Optional<StudentLog> optionalLog = logRepository.findById(logId);
 
         if (optionalLog.isPresent()) {
             StudentLog log = optionalLog.get();
 
-            if (log.getStudent().equals(student)) {
+            if (log.getLearningProgress().getId().equals(learningProgressId)) {
                 log.setEnabled(false);
                 logRepository.save(log);
             }

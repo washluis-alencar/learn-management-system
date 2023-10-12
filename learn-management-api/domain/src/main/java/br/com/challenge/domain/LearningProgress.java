@@ -3,13 +3,12 @@ package br.com.challenge.domain;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "LEARNING_PROCESS")
+@Table(name = "LEARNING_PROGRESS")
 @Data
-public class LearningProcess {
+public class LearningProgress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

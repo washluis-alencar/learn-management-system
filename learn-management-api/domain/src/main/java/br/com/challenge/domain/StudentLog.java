@@ -15,7 +15,7 @@ public class StudentLog {
     private Long id;
 
     @ManyToOne
-    private Student student;
+    private LearningProgress learningProgress;
 
     private LocalDate date;
 

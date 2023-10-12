@@ -6,6 +6,8 @@ import br.com.challenge.presentation.representation.CourseRepresentation;
 import br.com.challenge.service.CourseService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(ApiPath.COURSES)
 public class CourseController {
@@ -20,5 +22,10 @@ public class CourseController {
         Course course = CourseMapper.convertToCourse(courseRepresentation);
         Course savedCourse = courseService.createCourse(course, courseRepresentation.getAdminUserName());
         return CourseMapper.convertToCourseRepresentation(savedCourse);
+    }
+
+    @GetMapping
+    public List<Course> findAllCourses() {
+        return courseService.findAllCourses();
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.Optional;
 
 @Service
 public class StudentServiceImpl implements StudentService {
@@ -43,6 +44,11 @@ public class StudentServiceImpl implements StudentService {
             return studentRepository.save(student);
         }
         return null;
+    }
+
+    @Override
+    public Optional<Student> findByUserName(String userName) {
+        return studentRepository.findByUser_Username(userName);
     }
 
     private boolean isStudentAgeValid(LocalDate dateOfBirth) {
