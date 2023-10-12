@@ -6,6 +6,7 @@ import br.com.challenge.service.StudentLogService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,4 +35,14 @@ public class StudentLogServiceImpl implements StudentLogService {
         throw new IllegalArgumentException("Log not found");
     }
 
+    @Override
+    @Transactional
+    public StudentLog save(StudentLog studentLog) {
+        return logRepository.save(studentLog);
+    }
+
+    @Override
+    public List<StudentLog> findByStudentUsername(String username) {
+        return logRepository.findByLearningProgress_Student_User_Username(username);
+    }
 }
