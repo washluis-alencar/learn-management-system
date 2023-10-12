@@ -1,1 +1,38 @@
-<p>learning-progress works!</p>
+<div class="form-field-container" *ngIf="step == 1">
+  <div>
+    <mat-form-field>
+      <mat-label>Student Username</mat-label>
+      <input matInput [(ngModel)]="studentUserName"/>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+</div>
+<div class="flex flex-column" style="width: 50%" *ngIf="step == 2">
+  <div>
+    <h3>Courses</h3>
+    <div class="data-list">
+      <div class="data-list-item" *ngFor="let course of courses">
+        <div class="data-list-item-content">
+          <div class="data-list-item-header">
+            <span>{{ course.courseName }}</span>
+          </div>
+          <div class="data-list-item-date">
+            {{ course.startDate | date:'mediumDate' }}
+          </div>
+          <div class="data-list-item-details">
+            <p>
+              Description: {{ course.description }}
+            </p>
+          </div>
+        </div>
+        <div class="data-list-item-actions">
+          <button mat-raised-button color="primary" (click)="enrollCourse(course)" *ngIf="isEnrollable(course)">Enroll</button>
+          <button mat-raised-button color="accent" (click)="finishCourse(course)" *ngIf="isFinishable(course)">Finish</button>
+          <button mat-raised-button color="warn" (click)="logHours(course)" *ngIf="isFinishable(course)">Log Hours</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <h3>Log hours</h3>
+</div>

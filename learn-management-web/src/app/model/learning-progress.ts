@@ -1,6 +1,6 @@
 import {Course} from './course';
 
-export class LearningProcess {
+export class LearningProgress {
   id: number;
   studentUserName: string;
   course: Course;

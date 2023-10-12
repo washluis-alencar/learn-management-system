@@ -7,6 +7,10 @@ import {HomeModule} from './home/home.module';
 import {NgxMaskModule} from 'ngx-mask';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {HttpClientModule} from '@angular/common/http';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDialogModule} from '@angular/material/dialog';
+import {DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatNativeDateModule} from '@angular/material/core';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +22,14 @@ import {HttpClientModule} from '@angular/common/http';
     HttpClientModule,
     AppRoutingModule,
     HomeModule,
-    NgxMaskModule.forRoot()
+    NgxMaskModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule
   ],
-  providers: [],
+  providers: [
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
