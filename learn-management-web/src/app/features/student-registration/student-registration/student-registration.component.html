@@ -1,1 +1,67 @@
-<p>student-registration works!</p>
+<mat-progress-bar class="progress-bar" mode="indeterminate" color="warn" *ngIf="loading" @fade></mat-progress-bar>
+
+<div
+  class="full-flex-column align-center form-wrapper"
+  style="position: relative">
+  <form
+    class="full-flex-column align-center"
+    [formGroup]="form">
+
+    <div class="form-field-container">
+      <div>
+        <mat-form-field>
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" required />
+          <mat-error *ngIf="form.get('email').hasError('required')">What is the email?</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput
+            [dropSpecialCharacters]="false"
+            formControlName="dateOfBirth"
+            [mask]="'00/00/0000'"
+            placeholder="Date of Birth"
+            required/>
+          <mat-error *ngIf="form.get('dateOfBirth').hasError('required')">What is the DOB?</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="First Name" formControlName="firstName" required />
+          <mat-error *ngIf="form.get('firstName').hasError('required')">What is the first name?</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Last Name" formControlName="lastName" required />
+          <mat-error *ngIf="form.get('lastName').hasError('required')">What is the last name?</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Username" formControlName="username" required />
+          <mat-error *ngIf="form.get('username').hasError('required')">What is the username?</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput placeholder="Address" formControlName="address" required />
+          <mat-error *ngIf="form.get('address').hasError('required')">What is the address?</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <input matInput
+            [dropSpecialCharacters]="false"
+            formControlName="phoneNumber"
+            [mask]="'(000) 000-0000'"
+            placeholder="Phone Number"
+            required/>
+          <mat-error *ngIf="form.get('phoneNumber').hasError('required')">What is the phone number?</mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>
+  </form>
+</div>

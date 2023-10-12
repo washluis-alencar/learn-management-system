@@ -835,26 +835,6 @@ i {
   border-radius: .625rem;
 }
 
-.cv-scroll::-webkit-scrollbar-thumb, .cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb {
-  -webkit-transition: all ease .3s;
-  -moz-transition: all ease .3s;
-  -ms-transition: all ease .3s;
-  -o-transition: all ease .3s;
-  transition: all ease .3s;
-  background-color: rgba($darkLilac, 0);
-  border-radius: .625rem;
-}
-
-*:hover.cv-scroll::-webkit-scrollbar-thumb, *:hover.cdk-virtual-scroll-viewport::-webkit-scrollbar-thumb {
-  background-color: rgba($darkLilac, .6);
-  border-radius: .625rem;
-}
-
-.mat-form-field:not(.dark) .mat-form-field-wrapper .mat-form-field-label-wrapper .mat-form-field-label,
-.mat-form-field:not(.dark) .mat-form-field-wrapper .mat-form-field-infix .mat-form-field-label-wrapper .mat-form-field-label {
-  color: darken($grey, 10%) !important;
-}
-
 .mat-form-field .mat-form-field-wrapper .mat-form-field-label-wrapper .mat-form-field-label {
   font-family: Quicksand, sans-serif;
 }
@@ -1383,7 +1363,7 @@ button.ck {
 }
 
 .mat-form-field-label-wrapper {
-  //top: -1.1em;
+  top: -1.1em;
 }
 
 .vertical-line {
@@ -2443,3 +2423,18 @@ mat-bottom-sheet-container, mat-nav-list {
 .mat-standard-chip .mat-chip-avatar {
   margin-left: 0 !important;
 }
+
+
+
+/* */
+.form-field-container {
+  mat-form-field {
+    padding: 20px;
+    .mat-form-field-label {
+      font-size: 14px;
+    }
+  }
+}
+
+
+
