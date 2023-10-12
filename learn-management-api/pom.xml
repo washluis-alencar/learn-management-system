@@ -21,7 +21,7 @@
 	<artifactId>learn-management-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>learn-management-ap</name>
-	<description>API para locacao de carros</description>
+	<description>API to learn management system</description>
 
 	<properties>
 		<java.version>11</java.version>
@@ -37,13 +37,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
-	<dependencies>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-api</artifactId>
-			<version>${slf4j.version}</version>
-		</dependency>
-	</dependencies>
 
 </project>

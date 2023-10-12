@@ -13,6 +13,7 @@ import java.util.List;
 
 @Service
 public class CourseServiceImpl implements CourseService {
+    public static final int MAX_COURSE_PERIOD = 6;
     private final CourseRepository courseRepository;
     private final AdministratorService administratorService;
 
@@ -54,7 +55,7 @@ public class CourseServiceImpl implements CourseService {
         }
         Period period = Period.between(course.getStartDate(), course.getFinalDate());
         int months = period.getYears() * 12 + period.getMonths();
-        return months <= 6;
+        return months <= MAX_COURSE_PERIOD;
     }
 
 }

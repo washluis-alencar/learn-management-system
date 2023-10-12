@@ -17,7 +17,8 @@ import java.util.Optional;
 
 @Service
 public class LearningProgressServiceImpl implements LearningProgressService {
-    
+
+    public static final int MAX_COURSES_AT_TIME = 3;
     private final LearningProgressRepository learningProgressRepository;
     private final StudentService studentService;
 
@@ -67,6 +68,6 @@ public class LearningProgressServiceImpl implements LearningProgressService {
 
     public boolean isStudentAllowedToRegisterMoreCourses(Student student) {
         List<LearningProgress> activeLearningProgresses = learningProgressRepository.findByStudentAndEndDateIsNull(student);
-        return activeLearningProgresses.size() < 3;
+        return activeLearningProgresses.size() < MAX_COURSES_AT_TIME;
     }
 }

@@ -1,7 +1,7 @@
 package br.com.challenge.exception;
 
 /**
- * Exception para recurso nao encontrado
+ * Exception to be thrown when an entity is not found.
  * @author Alencar, Washington
  */
 public class EntityNotFoundException extends Exception {
