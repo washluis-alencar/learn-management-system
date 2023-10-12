@@ -5,7 +5,7 @@ import br.com.challenge.domain.StudentLog;
 import java.util.List;
 
 public interface StudentLogService {
-    void removeLog(Long learningProgressId, Long logId);
+    void removeLog(Long logId);
 
     StudentLog save(StudentLog studentLog);
 

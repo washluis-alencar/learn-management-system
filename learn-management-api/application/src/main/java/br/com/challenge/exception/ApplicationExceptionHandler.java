@@ -14,8 +14,8 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class ApplicationExceptionHandler {
 
-    @ExceptionHandler(BaseServiceException.class)
-    public ResponseEntity<ErrorAPI> handleBaseServiceException(BaseServiceException exception, WebRequest request) {
+    @ExceptionHandler(ServiceException.class)
+    public ResponseEntity<ErrorAPI> handleBaseServiceException(ServiceException exception, WebRequest request) {
         ErrorAPI errorAPI = ErrorAPI.builder()
                 .status(HttpStatus.BAD_REQUEST.value())
                 .message(exception.getLocalizedMessage())

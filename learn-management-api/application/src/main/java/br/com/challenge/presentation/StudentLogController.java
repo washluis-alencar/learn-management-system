@@ -4,6 +4,7 @@ import br.com.challenge.mapper.StudentLogMapper;
 import br.com.challenge.presentation.representation.StudentLogRepresentation;
 import br.com.challenge.service.StudentLogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,5 +32,11 @@ public class StudentLogController {
         var logList = studentLogService.findByStudentUsername(studentUserName);
         return logList.stream().map(StudentLogMapper::convertToRepresentation)
                 .collect(Collectors.toList());
+    }
+
+    @DeleteMapping(path = "/{logId}")
+    public ResponseEntity removeLog(@PathVariable Long logId) {
+        studentLogService.removeLog(logId);
+        return ResponseEntity.noContent().build();
     }
 }

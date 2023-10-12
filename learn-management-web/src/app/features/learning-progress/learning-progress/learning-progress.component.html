@@ -17,7 +17,10 @@
             <span>{{ course.courseName }}</span>
           </div>
           <div class="data-list-item-date">
-            {{ course.startDate | date:'mediumDate' }}
+            Start Date: {{ course.startDate | date:'mediumDate' }}
+          </div>
+          <div class="data-list-item-date">
+            End Date: {{ course.startDate | date:'mediumDate' }}
           </div>
           <div class="data-list-item-details">
             <p>
@@ -88,6 +91,9 @@
               Description: {{ log.taskDescription }}
             </p>
           </div>
+        </div>
+        <div>
+          <button mat-raised-button color="primary" (click)="deleteLog(log)">Remove</button>
         </div>
       </div>
     </div>

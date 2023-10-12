@@ -11,5 +11,5 @@ import java.util.List;
 @Repository
 public interface StudentLogRepository extends JpaRepository<StudentLog, Long> {
 
-    List<StudentLog> findByLearningProgress_Student_User_Username(String username);
+    List<StudentLog> findByEnabledTrueAndLearningProgress_Student_User_Username(String username);
 }

@@ -36,14 +36,16 @@ export class CourseAdministrationComponent implements OnInit {
       this.loading = true;
       const courseData: Course = this.form.value;
       courseData.adminUserName = this.userName;
+      courseData.startDate = courseData.startDate ? new Date(this.form.value.startDate).toISOString() : null;
+      courseData.finalDate = courseData.startDate ? new Date(this.form.value.finalDate).toISOString() : null;
       this.courseService.save(courseData).subscribe(
         () => {
           alert('Course saved successfully');
           this.form.reset();
           this.router.navigate(['/']);
         },
-        () => {
-          alert('Error saving course');
+        (error) => {
+          alert('Error saving course: ' + error?.error.message);
           this.loading = false;
         }, () => {
           this.loading = false;

@@ -1,6 +1,7 @@
 package br.com.challenge.service.impl;
 
 import br.com.challenge.domain.Course;
+import br.com.challenge.exception.ServiceException;
 import br.com.challenge.repository.CourseRepository;
 import br.com.challenge.service.AdministratorService;
 import br.com.challenge.service.CourseService;
@@ -24,19 +25,19 @@ public class CourseServiceImpl implements CourseService {
     @Transactional
     public Course createCourse(Course course, String adminUserName) {
         if (courseRepository.existsByCourseName(course.getCourseName())) {
-            throw new IllegalArgumentException("Course name must be unique");
+            throw new ServiceException("Course name must be unique");
         }
 
         if (!administratorService.isAdministrator(adminUserName)) {
-            throw new IllegalArgumentException("Only administrators can manage courses");
+            throw new ServiceException("Only administrators can manage courses");
         }
 
         if (course.getStartDate() != null && course.getStartDate().isAfter(course.getFinalDate())) {
-            throw new IllegalArgumentException("Start date cannot be after the final date");
+            throw new ServiceException("Start date cannot be after the final date");
         }
 
         if (!isCourseCompletedWithinSixMonths(course)) {
-            throw new IllegalArgumentException("Course must be completed within 6 months of the start date");
+            throw new ServiceException("Course must be completed within 6 months of the start date");
         }
 
         return courseRepository.save(course);

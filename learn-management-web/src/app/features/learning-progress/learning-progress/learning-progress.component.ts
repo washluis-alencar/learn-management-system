@@ -50,7 +50,9 @@ export class LearningProgressComponent implements OnInit {
           this.progress = progress;
           this.studentLogs = logs;
           this.step++;
-        }, () => alert('Error loading learning progress'));
+        }, (error) => {
+          alert('Error loading learning progress: ' + error?.error.message);
+        });
     }
   }
 
@@ -65,7 +67,10 @@ export class LearningProgressComponent implements OnInit {
     this.learningProgressService.save(learningProgress).subscribe(() => {
       this.progress.push(learningProgress);
       this.loading = false;
-    }, () => this.loading = false);
+    }, (error) => {
+      this.loading = false;
+      alert('Error enrolling course: ' + error?.error.message);
+    });
   }
 
   finishCourse(course: Course): void {
@@ -74,7 +79,10 @@ export class LearningProgressComponent implements OnInit {
     learningProgress.endDate = new Date();
     this.learningProgressService.update(learningProgress).subscribe(() => {
       this.loading = false;
-    }, () => this.loading = false);
+    }, (error) => {
+      this.loading = false;
+      alert('Error finishing course: ' + error?.error.message);
+    });
   }
 
   logHours(course: Course): void {
@@ -98,9 +106,15 @@ export class LearningProgressComponent implements OnInit {
         this.formLogHours.reset();
         this.courseSelected = null;
         this.studentLogs.push(log);
-      }, error => alert('Error saving log'));
+      }, error => alert('Error saving log: ' + error?.error.message));
     } else {
       alert('Form is invalid. Please check the fields.');
     }
+  }
+
+  deleteLog(log: StudentLog): void  {
+    this.logService.delete(log.id).subscribe(() => {
+      this.studentLogs = this.studentLogs.filter(l => l.id !== log.id);
+    });
   }
 }

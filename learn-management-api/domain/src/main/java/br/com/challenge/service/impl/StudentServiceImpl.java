@@ -1,6 +1,7 @@
 package br.com.challenge.service.impl;
 
 import br.com.challenge.domain.Student;
+import br.com.challenge.exception.ServiceException;
 import br.com.challenge.repository.StudentRepository;
 import br.com.challenge.service.StudentService;
 import org.springframework.stereotype.Service;
@@ -22,18 +23,26 @@ public class StudentServiceImpl implements StudentService {
     @Transactional
     public Student saveStudent(Student student) {
         if (!isStudentAgeValid(student.getDateOfBirth())) {
-            throw new IllegalArgumentException("Student must be at least 16 years old.");
+            throw new ServiceException("Student must be at least 16 years old.");
         }
 
         if (isEmailAlreadyInUse(student.getEmail())) {
-            throw new IllegalArgumentException("Email address is already in use.");
+            throw new ServiceException("Email address is already in use.");
+        }
+
+        if (isUserNameAlreadyInUse(student.getUser().getUsername())) {
+            throw new ServiceException("Username is already in use.");
         }
 
         if (!areMandatoryFieldsProvided(student)) {
-            throw new IllegalArgumentException("Required fields should be informed.");
+            throw new ServiceException("Required fields should be informed.");
         }
 
         return studentRepository.save(student);
+    }
+
+    private boolean isUserNameAlreadyInUse(String userName) {
+        return studentRepository.findByUser_Username(userName).isPresent();
     }
 
     @Override

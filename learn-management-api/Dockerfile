@@ -26,17 +26,12 @@ COPY application application
 
 RUN mvn package -DskipTests
 
-FROM openjdk:11.0.15-slim as locadora
+FROM openjdk:11.0.15-slim as learn-management-system
 
 WORKDIR /app
 
-ARG JAVA_OPTS
-ENV JAVA_OPTS=$JAVA_OPTS
-
-ARG PORT=8080
-ENV PORT=${PORT}
-EXPOSE ${PORT}
-
 COPY --from=maven_build /build/application/target/*.jar /app/learn-management-system.jar
 
-ENTRYPOINT java $JAVA_OPTS -Dserver.port=${PORT} -jar learn-management-system.jar
+EXPOSE 8080
+
+CMD ["java", "-jar", "/app/learn-management-system.jar"]

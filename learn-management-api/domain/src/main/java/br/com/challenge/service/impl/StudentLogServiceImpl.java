@@ -20,19 +20,16 @@ public class StudentLogServiceImpl implements StudentLogService {
 
     @Override
     @Transactional
-    public void removeLog(Long learningProgressId, Long logId) {
+    public void removeLog(Long logId) {
         Optional<StudentLog> optionalLog = logRepository.findById(logId);
 
         if (optionalLog.isPresent()) {
             StudentLog log = optionalLog.get();
-
-            if (log.getLearningProgress().getId().equals(learningProgressId)) {
-                log.setEnabled(false);
-                logRepository.save(log);
-            }
+            log.setEnabled(false);
+            logRepository.save(log);
+        } else {
+            throw new IllegalArgumentException("Log not found");
         }
-
-        throw new IllegalArgumentException("Log not found");
     }
 
     @Override
@@ -43,6 +40,6 @@ public class StudentLogServiceImpl implements StudentLogService {
 
     @Override
     public List<StudentLog> findByStudentUsername(String username) {
-        return logRepository.findByLearningProgress_Student_User_Username(username);
+        return logRepository.findByEnabledTrueAndLearningProgress_Student_User_Username(username);
     }
 }

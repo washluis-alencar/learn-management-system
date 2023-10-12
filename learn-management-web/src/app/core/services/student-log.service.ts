@@ -17,4 +17,8 @@ export class StudentLogService {
   findAllByStudentUserName(studentUserName: string): Observable<StudentLog[]> {
     return this.http.get<StudentLog[]>(`${LEARN_API}/student-logs/${studentUserName}`);
   }
+
+  delete(id: number): Observable<any> {
+    return this.http.delete(`${LEARN_API}/student-logs/${id}`);
+  }
 }

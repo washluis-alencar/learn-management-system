@@ -4,6 +4,7 @@ import br.com.challenge.domain.Course;
 import br.com.challenge.domain.LearningProgress;
 import br.com.challenge.domain.Student;
 import br.com.challenge.exception.EntityNotFoundException;
+import br.com.challenge.exception.ServiceException;
 import br.com.challenge.repository.LearningProgressRepository;
 import br.com.challenge.service.LearningProgressService;
 import br.com.challenge.service.StudentService;
@@ -36,7 +37,7 @@ public class LearningProgressServiceImpl implements LearningProgressService {
 
         Student student = studentOptional.get();
         if (!isStudentAllowedToRegisterMoreCourses(student)) {
-            throw new IllegalArgumentException("Student cannot register more than 3 courses");
+            throw new ServiceException("Student cannot register more than 3 courses");
         }
 
         LearningProgress learningProgress = new LearningProgress();

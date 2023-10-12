@@ -41,8 +41,8 @@ export class StudentRegistrationComponent implements OnInit {
           this.form.reset();
           this.router.navigate(['/']);
         },
-        () => {
-          alert('Error saving student');
+        (error) => {
+          alert('Error saving student: ' + error?.error.message);
           this.loading = false;
         }, () => {
           this.loading = false;

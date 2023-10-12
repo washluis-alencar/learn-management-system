@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  learn-management-api:
+    build:
+      context: ./learn-management-api
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres-db
+
+  learn-management-web:
+    build:
+      context: ./learn-management-web
+    ports:
+      - "4200:4200"
+    depends_on:
+      - learn-management-api
+
+  postgres-db:
+    image: postgres:13
+    container_name: postgres-learn-management
+    environment:
+      POSTGRES_DB: learn-management
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5433:5432"
