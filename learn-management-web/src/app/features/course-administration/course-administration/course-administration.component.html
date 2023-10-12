@@ -1,1 +1,54 @@
-<p>course-administration works!</p>
+<div class="full-flex-column align-center form-wrapper" style="position: relative">
+  <div class="form-field-container" *ngIf="step == 1">
+    <div>
+      <mat-form-field>
+        <mat-label>Administrator Username</mat-label>
+        <input matInput [(ngModel)]="userName"/>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary" (click)="nextStep()">Next</button>
+  </div>
+  <form class="full-flex-column align-center" [formGroup]="form" *ngIf="step == 2">
+    <div class="form-field-container">
+      <div>
+        <mat-form-field>
+          <mat-label>Course Code</mat-label>
+          <input matInput formControlName="courseCode" required />
+          <mat-error *ngIf="form.get('courseCode').hasError('required')">Course code is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Course Name</mat-label>
+          <input matInput formControlName="courseName" required />
+          <mat-error *ngIf="form.get('courseName').hasError('required')">Course name is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Start Date</mat-label>
+          <input matInput
+                 [dropSpecialCharacters]="false"
+                 formControlName="startDate"
+                 [mask]="'00/00/0000'"/>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Final Date</mat-label>
+          <input matInput
+                 [dropSpecialCharacters]="false"
+                 formControlName="finalDate"
+                 [mask]="'00/00/0000'"/>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary" (click)="save()">Save</button>
+    </div>
+  </form>
+</div>

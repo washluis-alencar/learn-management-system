@@ -43,52 +43,6 @@ $darkenGrey: darken($grey, 10%);
 $lightText: #FFF;
 $darkText: $darkerBlue;
 
-@mixin default-background(){
-  //background: linear-gradient(to top, #FFF 0%, #FFF 2.5rem, #FAFAFC 130px, #FAFAFC 100%) !important;
-  //background: rgba(240, 240, 247, 1);
-  background: $lightBackground;
-}
-
-@mixin linear-gradient-from-bottom($bottom, $top){
-  background: $bottom; /* Old browsers */
-  background: -moz-linear-gradient(bottom,  $bottom 0%, $top 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,$bottom), color-stop(100%,$top)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(bottom,  $bottom 0%,$top 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(bottom,  $bottom 0%,$top 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(bottom,  $bottom 0%,$top 100%); /* IE10+ */
-  background: linear-gradient(to top,  $bottom 0%,$top 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4193d6', endColorstr='#39bad6',GradientType=0 ); /* IE6-9 */
-}
-@mixin linear-gradient-from-left($left, $right){
-  background: $left; /* Old browsers */
-  background: -moz-linear-gradient(left,  $left 0%, $right 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,$left), color-stop(100%,$right)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  $left 0%,$right 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left,  $left 0%,$right 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left,  $left 0%,$right 100%); /* IE10+ */
-  background: linear-gradient(to right,  $left 0%,$right 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4193d6', endColorstr='#39bad6',GradientType=0 ); /* IE6-9 */
-}
-@mixin linear-gradient-from-diagonal($left, $right){
-  background: $left; /* Old browsers */
-  background: -moz-linear-gradient(-45deg, $left 0%, $right 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,$left), color-stop(100%,$right)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(-45deg,  $left 0%,$right 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(-45deg,  $left 0%,$right 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(-45deg,  $left 0%,$right 100%); /* IE10+ */
-  background: linear-gradient(135deg,  $left 0%,$right 100%); /* W3C */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$left, endColorstr=$right,GradientType=1 ); /* IE6-9 */
-}
-@mixin shimmer-gradient($defaultColor, $shimmerColor){
-  background: $defaultColor; /* Old browsers */
-  background: -moz-linear-gradient(left,  $defaultColor 0%, $shimmerColor 50%, $defaultColor 100%); /* FF3.6+ */
-  background: -webkit-gradient(linear, left center, right center, color-stop(0%,$defaultColor), color-stop(50%,$shimmerColor), color-stop(100%,$defaultColor)); /* Chrome,Safari4+ */
-  background: -webkit-linear-gradient(left,  $defaultColor 0%, $shimmerColor 50%, $defaultColor 100%); /* Chrome10+,Safari5.1+ */
-  background: -o-linear-gradient(left, $defaultColor 0%, $shimmerColor 50%, $defaultColor 100%); /* Opera 11.10+ */
-  background: -ms-linear-gradient(left, $defaultColor 0%, $shimmerColor 50%, $defaultColor 100%); /* IE10+ */
-  background: linear-gradient(to right, $defaultColor 0%, $shimmerColor 50%, $defaultColor 100%); /* W3C */
-}
-
 .fg-primary{
   color: $darkLilac;
 }
@@ -158,14 +112,6 @@ $darkText: $darkerBlue;
 *.hover-light-blue:hover{background-color: rgba($lightBlue, .1);}
 *.hover-light-black:hover{background-color: rgba($lightBlack, .1);}
 
-@mixin browser($browsers: Mozilla) {
-  @each $browser in $browsers {
-    html[data-browser*="#{$browser}"] & {
-      @content;
-    }
-  }
-}
-
 $borderRadius: .25rem;
 
 .italic{
@@ -188,76 +134,4 @@ $borderRadius: .25rem;
 }
 .font-size-10{
   font-size: .625rem;
-}
-
-/**
- * ==============================================
- * Dot Flashing Animation
- * ==============================================
- */
-
-@keyframes blink {
-  0% {
-    opacity: .2;
-  }
-  20% {
-    opacity: 1;
-  }
-  100% {
-    opacity: .2;
-  }
-}
-
-.loading-message span {
-  position: relative;
-  animation-name: blink;
-  animation-duration: 1.4s;
-  animation-iteration-count: infinite;
-  animation-fill-mode: both;
-  font-size: 1.25rem;
-
-  &:nth-child(2) {
-    animation-delay: .2s;
-  }
-
-  &:nth-child(3) {
-    animation-delay: .4s;
-  }
-}
-
-
-
-/**
- * ==============================================
- * Up And Down Animation
- * ==============================================
- */
-
-@keyframes up-and-down-improved {
-  0%   { transform: scale(1,1)      translateY(0); }
-  10%  { transform: scale(1.1,.9)   translateY(0); }
-  30%  { transform: scale(.9,1.1)   translateY(-.9375rem); }
-  50%  { transform: scale(1.05,.95) translateY(0); }
-  57%  { transform: scale(1,1)      translateY(-.1875rem); }
-  64%  { transform: scale(1,1)      translateY(0); }
-  100% { transform: scale(1,1)      translateY(0); }
-}
-
-i.up-and-down{
-  animation-name: up-and-down-improved;
-  animation-duration: 1.4s;
-  animation-iteration-count: infinite;
-  position: relative;
-  animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
-}
-
-/**
- * ==============================================
- * Mixins
- * ==============================================
- */
-@mixin text-overflow-ellipsis {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }

@@ -7,4 +7,5 @@ package br.com.challenge.presentation;
 public interface ApiPath {
 
     public String STUDENTS = "/students";
+    String COURSES = "/courses";
 }
