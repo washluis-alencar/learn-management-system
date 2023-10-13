@@ -6,7 +6,6 @@ WORKDIR /app
 
 # Bundle app files
 COPY package.json package.json
-COPY .npmrc .npmrc
 RUN npm install
 
 COPY ./ /app/
@@ -14,7 +13,7 @@ RUN npm run build
 
 FROM nginx:1.21.6
 
-COPY --from=build /app/dist/learn-management-web /usr/share/nginx/html
+COPY --from=angular-base /app/dist/learn-management-web /usr/share/nginx/html
 
 EXPOSE 80
 
